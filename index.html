@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hefi istriku ❤️</title>
+  <title>Hefi istriku ❤️ - نسخة محسّنة</title>
   <style>
     :root {
       --heart-color: #ff4081;
@@ -40,6 +40,55 @@
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px) rotateX(10deg); }
       to { opacity: 1; transform: translateY(0) rotateX(0); }
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 16px;
+      padding: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .scores-container {
+      display: flex;
+      gap: 20px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .player-score {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 15px;
+      border-radius: 12px;
+      min-width: 100px;
+      transition: all 0.3s ease;
+    }
+    
+    .player-score.player1 {
+      background: rgba(255, 64, 129, 0.15);
+      border: 2px solid var(--player1-color);
+    }
+    
+    .player-score.player2 {
+      background: rgba(255, 235, 59, 0.15);
+      border: 2px solid var(--player2-color);
+    }
+    
+    .player-name {
+      font-size: 16px;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    
+    .score-value {
+      font-size: 24px;
+      font-weight: 700;
     }
     
     .grid-container {
@@ -532,6 +581,226 @@
       100% { background-position: 0% 50%; }
     }
     
+    /* Notification badge */
+    .notification-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #ff4081;
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      animation: pulse 1.5s infinite;
+    }
+    
+    /* إشعارات رسائل محسّنة */
+    .message-notification {
+      position: fixed;
+      bottom: 100px;
+      right: 25px;
+      width: 350px;
+      background: linear-gradient(135deg, #ffffff, #f9f9f9);
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+      z-index: 101;
+      display: none;
+      transform: translateX(120%);
+      animation: slideIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      border: 1px solid rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    @keyframes slideIn {
+      0% { transform: translateX(120%); }
+      100% { transform: translateX(0); }
+    }
+    
+    @keyframes fadeOut {
+      0% { opacity: 1; transform: translateX(0); }
+      100% { opacity: 0; transform: translateX(20px); }
+    }
+    
+    .message-notification-content {
+      padding: 20px;
+      position: relative;
+    }
+    
+    .message-notification-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    
+    .message-notification-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #ff4081, #e91e63);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 4px 12px rgba(255,64,129,0.3);
+    }
+    
+    .message-notification-title {
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+    }
+    
+    .message-notification-subtitle {
+      font-size: 14px;
+      color: #777;
+      margin-top: 4px;
+    }
+    
+    .message-notification-body {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.5;
+      margin-bottom: 15px;
+      padding: 12px 15px;
+      background: rgba(255, 224, 240, 0.3);
+      border-radius: 12px;
+      border-left: 3px solid #ff4081;
+    }
+    
+    .message-notification-sender {
+      font-weight: bold;
+      color: #ff4081;
+      display: inline-block;
+      margin-right: 5px;
+    }
+    
+    .notification-scores {
+      display: flex;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.7);
+      border-radius: 12px;
+      padding: 12px 15px;
+      margin-top: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .player-score-notification {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+    
+    .player-score-notification.player1 {
+      border-right: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .player-name-notification {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #555;
+    }
+    
+    .player-score-value {
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ff4081, #e91e63);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .player-score-notification.player2 .player-score-value {
+      background: linear-gradient(135deg, #ffeb3b, #ffc107);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .message-notification-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      font-size: 12px;
+      color: #888;
+    }
+    
+    .close-notification {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #aaa;
+      transition: color 0.3s, transform 0.3s;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .close-notification:hover {
+      color: #ff4081;
+      background: rgba(255,64,129,0.1);
+      transform: rotate(90deg);
+    }
+    
+    .notification-timestamp {
+      font-size: 13px;
+      color: #888;
+    }
+    
+    /* تأثيرات إضافية */
+    .message-notification:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ff4081, #ffeb3b);
+      animation: progressBar 5s linear forwards;
+    }
+    
+    @keyframes progressBar {
+      0% { width: 100%; }
+      100% { width: 0%; }
+    }
+    
+    /* تأثيرات الاهتزاز */
+    @keyframes vibrate {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-3px); }
+      50% { transform: translateX(3px); }
+      75% { transform: translateX(-3px); }
+      100% { transform: translateX(0); }
+    }
+    
+    .vibrate {
+      animation: vibrate 0.4s ease;
+    }
+    
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .grid-container {
@@ -540,10 +809,10 @@
       }
       
       .cell {
-        width: 22px;
-        height: 22px;
-        line-height: 22px;
-        font-size: 14px;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        font-size: 24px;
       }
       
       .chat-container {
@@ -558,6 +827,22 @@
         bottom: 20px;
         right: 20px;
       }
+      
+      .header-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .scores-container {
+        width: 100%;
+        justify-content: space-around;
+      }
+      
+      .message-notification {
+        width: 90%;
+        right: 5%;
+        max-width: 300px;
+      }
     }
   </style>
 </head>
@@ -570,7 +855,20 @@
   </div>
   
   <div class="game" id="game">
-    <h2 id="roomTitle"></h2>
+    <div class="header-container">
+      <h2 id="roomTitle"></h2>
+      <div class="scores-container">
+        <div class="player-score player1" id="player1Score">
+          <div class="player-name" id="player1Name">Player 1</div>
+          <div class="score-value">0</div>
+        </div>
+        <div class="player-score player2" id="player2Score">
+          <div class="player-name" id="player2Name">Player 2</div>
+          <div class="score-value">0</div>
+        </div>
+      </div>
+    </div>
+    
     <div id="turnInfo"></div>
     <div class="grid-container">
       <div class="grid" id="grid"></div>
@@ -582,13 +880,47 @@
   <div class="particles" id="particles"></div>
   <div class="confetti-container" id="confettiContainer"></div>
   
-  <button id="chatToggleBtn">💬</button>
+  <button id="chatToggleBtn">💬<span class="notification-badge" id="notificationBadge" style="display: none">0</span></button>
   <div class="chat-container" id="chatContainer">
     <div class="chat-header">Chat dengan Lawan</div>
     <div class="chat-messages" id="chatMessages"></div>
     <div class="chat-input">
       <input type="text" id="chatInput" placeholder="Ketik pesan...">
       <button id="sendMessageBtn">Kirim</button>
+    </div>
+  </div>
+  
+  <!-- إشعار الرسالة المحسّن -->
+  <div class="message-notification" id="messageNotification">
+    <div class="message-notification-content">
+      <button class="close-notification" onclick="closeNotification()">✕</button>
+      <div class="message-notification-header">
+        <div class="message-notification-icon">💬</div>
+        <div>
+          <div class="message-notification-title">Pesan baru</div>
+          <div class="message-notification-subtitle">Dari pemain di dalam ruangan</div>
+        </div>
+      </div>
+      <div class="message-notification-body">
+        <span class="message-notification-sender" id="notificationSender"></span>
+        <span id="notificationMessage"></span>
+      </div>
+      
+      <div class="notification-scores">
+        <div class="player-score-notification player1">
+          <div class="player-name-notification" id="notificationPlayer1">Player 1</div>
+          <div class="player-score-value" id="notificationScore1">0</div>
+        </div>
+        <div class="player-score-notification player2">
+          <div class="player-name-notification" id="notificationPlayer2">Player 2</div>
+          <div class="player-score-value" id="notificationScore2">0</div>
+        </div>
+      </div>
+      
+      <div class="message-notification-footer">
+        <div class="notification-timestamp" id="notificationTime"></div>
+        <div>Hefi Game</div>
+      </div>
     </div>
   </div>
 
@@ -600,6 +932,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
   <script>
+    // Firebase configuration (replace with your own)
     const firebaseConfig = {
       apiKey: "AIzaSyDMkW_cZQUP9Fb-XXXXXXXXXXXXXX",
       authDomain: "hefi-love-game.firebaseapp.com",
@@ -628,9 +961,24 @@
     const particlesContainer = document.getElementById("particles");
     const confettiContainer = document.getElementById("confettiContainer");
     const backgroundMusic = document.getElementById("backgroundMusic");
+    const player1Score = document.getElementById("player1Score");
+    const player2Score = document.getElementById("player2Score");
+    const player1Name = document.getElementById("player1Name");
+    const player2Name = document.getElementById("player2Name");
+    const notificationBadge = document.getElementById("notificationBadge");
+    const messageNotification = document.getElementById("messageNotification");
+    const notificationSender = document.getElementById("notificationSender");
+    const notificationMessage = document.getElementById("notificationMessage");
+    const notificationScore1 = document.getElementById("notificationScore1");
+    const notificationScore2 = document.getElementById("notificationScore2");
+    const notificationPlayer1 = document.getElementById("notificationPlayer1");
+    const notificationPlayer2 = document.getElementById("notificationPlayer2");
+    const notificationTime = document.getElementById("notificationTime");
 
     let playerName = "", playerSymbol = "", roomCode = "", isMyTurn = false, roomRef = null;
     let musicPlaying = false;
+    let unreadMessages = 0;
+    let currentRoomState = null;
     const GRID_SIZE = 15;
     const WINNING_LENGTH = 6;
 
@@ -722,7 +1070,8 @@
             board: Array(GRID_SIZE * GRID_SIZE).fill(""),
             turn: "X",
             status: "waiting",
-            messages: {}
+            messages: {},
+            scores: { player1: 0, player2: 0 }
           });
           playerSymbol = "X";
           isMyTurn = true;
@@ -783,6 +1132,8 @@
         const data = snap.val();
         if (!data || !data.board) return;
         
+        currentRoomState = data;
+        
         grid.innerHTML = "";
         data.board.forEach((cell, i) => {
           const div = document.createElement("div");
@@ -820,6 +1171,14 @@
         } else {
           restartButton.style.display = "none";
         }
+        
+        // Update player names and scores
+        if (data.players) {
+          player1Name.textContent = data.players.player1 || "Player 1";
+          player2Name.textContent = data.players.player2 || "Player 2";
+          player1Score.querySelector('.score-value').textContent = data.scores?.player1 || 0;
+          player2Score.querySelector('.score-value').textContent = data.scores?.player2 || 0;
+        }
       });
 
       ref.child("messages").on("child_added", snap => {
@@ -834,9 +1193,62 @@
           
           if (!isCurrentPlayer) {
             document.getElementById("messageSound").play();
+            
+            // Show message notification
+            showMessageNotification(message.sender, message.text);
+            
+            // Show notification badge if chat is closed
+            if (chatContainer.style.display !== "block") {
+              unreadMessages++;
+              notificationBadge.textContent = unreadMessages;
+              notificationBadge.style.display = "flex";
+            }
           }
         }
       });
+    }
+    
+    function showMessageNotification(sender, message) {
+      // Update notification content
+      notificationSender.textContent = sender;
+      notificationMessage.textContent = message;
+      
+      // Update scores
+      notificationScore1.textContent = currentRoomState?.scores?.player1 || 0;
+      notificationScore2.textContent = currentRoomState?.scores?.player2 || 0;
+      
+      // Update player names
+      notificationPlayer1.textContent = currentRoomState?.players?.player1 || "Player 1";
+      notificationPlayer2.textContent = currentRoomState?.players?.player2 || "Player 2";
+      
+      // Update timestamp
+      const now = new Date();
+      const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      notificationTime.textContent = `Sent at ${timeString}`;
+      
+      // Show notification
+      messageNotification.style.display = "block";
+      messageNotification.classList.remove('vibrate');
+      
+      // Reset animation
+      messageNotification.style.animation = 'none';
+      setTimeout(() => {
+        messageNotification.style.animation = 'slideIn 0.6s forwards';
+        messageNotification.classList.add('vibrate');
+      }, 10);
+      
+      // Auto-hide after 5 seconds
+      setTimeout(() => {
+        closeNotification();
+      }, 5000);
+    }
+    
+    function closeNotification() {
+      messageNotification.style.animation = 'fadeOut 0.5s forwards';
+      
+      setTimeout(() => {
+        messageNotification.style.display = "none";
+      }, 500);
     }
 
     function makeMove(index, ref, data) {
@@ -868,11 +1280,25 @@
       const nextTurn = playerSymbol === "X" ? "O" : "X";
       const winner = checkWin(data.board);
       
-      ref.update({
+      let updates = {
         board: data.board,
-        turn: nextTurn,
-        ...(winner && { winner })
-      });
+        turn: nextTurn
+      };
+      
+      if (winner) {
+        // Update scores
+        const winnerKey = winner.symbol === 'X' ? 'player1' : 'player2';
+        const newScores = {...data.scores || {player1: 0, player2: 0}};
+        newScores[winnerKey] = (newScores[winnerKey] || 0) + 1;
+        
+        updates = {
+          ...updates,
+          winner: winner,
+          scores: newScores
+        };
+      }
+      
+      ref.update(updates);
     }
 
     function checkWin(board) {
@@ -942,6 +1368,12 @@
       chatContainer.style.display = isVisible ? "none" : "block";
       chatToggleBtn.innerHTML = isVisible ? "💬" : "✕";
       chatToggleBtn.style.transform = isVisible ? "translateZ(0)" : "translateZ(12px) rotate(15deg)";
+      
+      // Reset notification badge when opening chat
+      if (!isVisible) {
+        unreadMessages = 0;
+        notificationBadge.style.display = "none";
+      }
     });
 
     sendMessageBtn.addEventListener("click", sendMessage);

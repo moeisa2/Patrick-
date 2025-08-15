@@ -7,7 +7,7 @@
   <style>
     :root {
       --heart-color: #ff4081;
-      --star-color: #ffeb3b;
+      --star-color: #b5fffc;
       --bg-gradient-start: #ffdee9;
       --bg-gradient-end: #b5fffc;
       --cell-bg: rgba(255, 255, 255, 0.95);
@@ -76,7 +76,7 @@
     }
     
     .player-score.player2 {
-      background: rgba(255, 235, 59, 0.15);
+      background: rgba(135, 206, 250, 0.7);
       border: 2px solid var(--player2-color);
     }
     
@@ -182,7 +182,7 @@
     
     .cell.O {
       color: var(--star-color);
-      text-shadow: 0 0 10px rgba(255, 235, 59, 0.7);
+      text-shadow: 0 0 10px rgba(135, 206, 250, 0.7);
       animation: starPulse 0.6s ease;
     }
     
@@ -212,7 +212,7 @@
     }
     
     .cell.winning-cell.O {
-      box-shadow: var(--winning-cell-glow) rgba(255, 235, 59, 0.7);
+      box-shadow: var(--winning-cell-glow) rgba(135, 206, 250, 0.7);
     }
     
     @keyframes winningGlow {
@@ -1138,7 +1138,7 @@
         data.board.forEach((cell, i) => {
           const div = document.createElement("div");
           div.className = `cell ${cell}`;
-          div.innerHTML = cell === "X" ? "❤️" : cell === "O" ? "💛" : "";
+          div.innerHTML = cell === "X" ? "🩷" : cell === "O" ? "🩵" : "";
           div.onclick = () => makeMove(i, ref, data);
           grid.appendChild(div);
         });
